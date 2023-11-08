@@ -7,9 +7,13 @@ import jakarta.validation.constraints.*;
 import java.util.Objects;
 @Entity
 public class Employer extends AbstractEntity {
-    @NotEmpty(message = "Name Required")
-    @Size(max = 100, message = "Maximum allowed is 100 characters")
+    @NotNull(message = "Location is required")
+    @Size(min =2, max = 100, message = "Location must be between 2 and 100 characters")
     private String location;
+
+    public Employer() {
+
+    }
 
     public String getLocation() {
         return location;
