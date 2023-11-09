@@ -14,8 +14,8 @@ public class Employer extends AbstractEntity {
     @NotNull(message = "Location is required")
     @Size(min =2, max = 100, message = "Location must be between 2 and 100 characters")
     private String location;
-    @OneToMany(mappedBy = "employer")
-   // @JoinColumn(name = "employer_id")
+    @OneToMany /*(mappedBy = "employer")*/
+    @JoinColumn(name = "employer_id")
     private List<Job> jobs = new ArrayList<>();
     public List<Job> getJobs() {
         return jobs;
@@ -39,24 +39,7 @@ public class Employer extends AbstractEntity {
         this.location = location;
     }
 
-    @Override
-    public String toString() {
-        return "Employer{" +
-                "location='" + location + '\'' +
-                '}';
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Employer employer = (Employer) o;
-        return Objects.equals(location, employer.location);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), location);
-    }
+
 }
